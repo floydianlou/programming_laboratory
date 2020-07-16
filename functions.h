@@ -12,19 +12,19 @@ std::string timeToString(time_t currentTime);
 
 void cinFail();
 
-void numOfUnreadChats(User *user);
+void numOfUnreadChats(const User *user);
 
 void printChats(User *user);
 
 void printChatMessages(User *user, int chatNumber);
 
-bool loginChoice(std::string choice);
+bool loginChoice(const std::string& choice);
 
 void changeUserUsername(std::string newUsername, User *user);
 
 void printUnreadChats(User *user);
 
-bool noChats(User *user);
+bool noChats(const User *user);
 
 void deleteAMessage(Chat *chat, int IDNum);
 

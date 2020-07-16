@@ -27,18 +27,18 @@ public:
         return realName;
     }
 
-    int numberOfChats() {
+    int numberOfChats() const {
         return chats.size();
     }
 
     void addChat(const Chat &chat);
 
-    int getNumOfUnreadChats();
+    int getNumOfUnreadChats() const;
 
 
     Chat *openAChat(int number);
 
-    bool noChats();
+    bool noChats() const;
 
 private:
     std::string realName;

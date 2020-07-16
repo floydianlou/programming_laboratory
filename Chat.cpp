@@ -40,7 +40,7 @@ std::_Rb_tree_iterator<std::pair<const int, Message *>> Chat::openMessage() {
     return chatMessages.begin();
 }
 
-int Chat::numOfUnreadMessages() {
+int Chat::numOfUnreadMessages() const {
     int count = 0;
     for (auto itr: chatMessages) {
         if (!itr.second->isRead()) {
@@ -50,15 +50,15 @@ int Chat::numOfUnreadMessages() {
     return count;
 }
 
-std::string Chat::getSenderName() {
+std::string Chat::getSenderName() const {
     return senderName;
 }
 
-std::string Chat::getReceiverName() {
+std::string Chat::getReceiverName() const {
     return receiverName;
 }
 
-std::string Chat::getChatName() {
+std::string Chat::getChatName() const {
     return chatName;
 }
 

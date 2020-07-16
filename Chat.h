@@ -22,26 +22,26 @@ public:
     void addMessage(Message &text);
 
 
-    Message *getLastMessage() {
+    const Message *getLastMessage() const {
         return chatMessages.rbegin()->second;
     }
 
-    int numberOfMessages() {
+    int numberOfMessages() const {
         return chatMessages.size();
     }
 
-    int numOfUnreadMessages();
+    int numOfUnreadMessages() const;
 
     std::_Rb_tree_iterator<std::pair<const int, Message *>> openMessage();
 
     void deleteMessage(int ID);
 
 
-    std::string getSenderName();
+    std::string getSenderName() const;
 
-    std::string getReceiverName();
+    std::string getReceiverName() const;
 
-    std::string getChatName();
+    std::string getChatName() const;
 
 
 private:

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "ProgramManager.h"
-#include "functions.h"
 #include "TextUserInterface.h"
 
 

@@ -8,7 +8,7 @@
 #include <limits>
 #include "User.h"
 
-std::string timeToString(time_t currentTime) {
+std::string timeToString(const time_t currentTime) {
     char timey[100];
     time_t time = currentTime;
     struct tm *localTime = localtime(&time);
@@ -24,7 +24,7 @@ void cinFail() {
     }
 }
 
-bool loginChoice(std::string choice) {
+bool loginChoice(const std::string& choice) {
     if (choice == "A" || choice == "a") {
         return true;
     } else if (choice == "B" || choice == "b") {
@@ -34,7 +34,7 @@ bool loginChoice(std::string choice) {
     }
 }
 
-void chatInfo(Chat itr) {
+void chatInfo(const Chat& itr) {
     std::cout << "Chat name: " << itr.getChatName() << std::endl;
     std::cout << "Sender: " << itr.getSenderName() << " - Receiver: " << itr.getReceiverName() << std::endl;
     std::cout << "Last message: ";
@@ -46,7 +46,7 @@ void chatInfo(Chat itr) {
     std::cout << std::endl;
 }
 
-bool noChats(User *user) {
+bool noChats(const User *user) {
     if (user->noChats()) {
         std::cout << "There are currently no chats in your account." << std::endl;
         return true;
@@ -81,12 +81,12 @@ void deleteAMessage(Chat *chat, int IDNum) {
 }
 
 
-void numOfUnreadChats(User *user) {
+void numOfUnreadChats(const User *user)  {
     int numberOfChats = user->getNumOfUnreadChats();
     std::cout << "You have " << numberOfChats << " chat(s) with unread messages." << std::endl;
 }
 
-void printMessageInfo(Message *text) {
+void printMessageInfo(const Message *text) {
     std::string time = timeToString(text->getCurrentTime());
     std::cout << time << " ";
     std::cout << "From: " << text->getSenderName() << " - Read (0/1): " << text->isRead() << " - Message ID: ";

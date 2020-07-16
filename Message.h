@@ -35,7 +35,7 @@ public:
         read = r;
     }
 
-    std::string getMessageText() {
+    std::string getMessageText() const {
         return messageText;
     }
 

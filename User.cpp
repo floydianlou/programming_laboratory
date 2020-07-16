@@ -19,12 +19,12 @@ Chat *User::openAChat(int number) {
     }
 }
 
-bool User::noChats() {
+bool User::noChats() const {
     return chats.empty();
 }
 
 
-int User::getNumOfUnreadChats() {
+int User::getNumOfUnreadChats() const {
     int count = 0;
     for (auto itr : chats) {
         if (itr.numOfUnreadMessages() > 0) {
