@@ -8,7 +8,7 @@
 #include <limits>
 #include "User.h"
 
-std::string timeToString(const time_t currentTime) {
+std::string timeToString(time_t currentTime) {
     char timey[100];
     time_t time = currentTime;
     struct tm *localTime = localtime(&time);

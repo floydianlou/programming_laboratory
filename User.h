@@ -35,7 +35,6 @@ public:
 
     int getNumOfUnreadChats() const;
 
-
     Chat *openAChat(int number);
 
     bool noChats() const;

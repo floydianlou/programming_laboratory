@@ -40,23 +40,24 @@ public:
     }
 
 
+    int getMessageId() const {
+        return messageID;
+    }
+
+
+    time_t getCurrentTime() const {
+        return currentTime;
+    }
+
     bool operator==(const Message &right) const {
         return senderName == right.senderName &&
                receiverName == right.receiverName &&
                messageText == right.messageText;
     }
 
-    int getMessageId() const {
-        return messageID;
-    }
 
     bool operator!=(const Message &right) const {
         return !(right == *this);
-    }
-
-
-    time_t getCurrentTime() const {
-        return currentTime;
     }
 
 private:

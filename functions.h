@@ -12,6 +12,8 @@ std::string timeToString(time_t currentTime);
 
 void cinFail();
 
+void chatInfo(const Chat& itr);
+
 void numOfUnreadChats(const User *user);
 
 void printChats(User *user);

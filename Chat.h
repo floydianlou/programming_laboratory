@@ -17,7 +17,7 @@ public:
 
     Chat(const User &sender, const User &receiver, std::string name);
 
-    virtual ~Chat();
+    ~Chat();
 
     void addMessage(Message &text);
 
