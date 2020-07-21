@@ -24,11 +24,11 @@ TEST(Chat, functions) {
     chat.addMessage(m);
     chat.addMessage(y);
     ASSERT_THROW(chat.deleteMessage(5), std::out_of_range);
-    ASSERT_EQ(chat.getLastMessage(), &y);
+    ASSERT_EQ(chat.getLastMessage(), y);
     ASSERT_EQ(chat.numberOfMessages(),2);
     ASSERT_EQ(chat.numOfUnreadMessages(),1);
     chat.deleteMessage(24);
-    ASSERT_EQ(chat.getLastMessage(), &m);
+    ASSERT_EQ(chat.getLastMessage(), m);
     ASSERT_THROW(chat.deleteMessage(3), std::invalid_argument);
     ASSERT_EQ(chat.numOfUnreadMessages(),0);
 }

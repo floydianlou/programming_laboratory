@@ -8,12 +8,12 @@
 void TextUserInterface::beginProgram() {
     std::string choice;
     std::cout << "\t\t\t\t\t WELCOME TO HAPPYCHAT!" << std::endl << std::endl;
-    std::cout << "Press A to continue as '" << program->getCurrentUser()->getRealName() << "'." << std::endl
+    std::cout << "Press A to continue as '" << program->getCurrentUser().getRealName() << "'." << std::endl
               << "Not you? Press B to change account." << std::endl << std::endl;
     std::cin >> choice;
     bool whatChoice = loginChoice(choice);
     if (whatChoice) {
-        std::cout << "You chose to continue as " << program->getCurrentUser()->getRealName() << "." << std::endl;
+        std::cout << "You chose to continue as " << program->getCurrentUser().getRealName() << "." << std::endl;
         mainMenu();
     } else {
         std::cout << "You chose to change account." << std::endl;
@@ -23,7 +23,7 @@ void TextUserInterface::beginProgram() {
 
 
 void TextUserInterface::mainMenu() {
-    std::cout << std::endl << "\t\t\t\t\t Hello, " << program->getCurrentUser()->getRealName() << "." << std::endl;
+    std::cout << std::endl << "\t\t\t\t\t Hello, " << program->getCurrentUser().getRealName() << "." << std::endl;
     std::cout << std::endl << "It's currently ";
     std::string currentTime = timeToString(program->getCurrentTime());
     std::cout << currentTime << "." << std::endl << std::endl;
@@ -44,14 +44,14 @@ void TextUserInterface::choices() {
     switch (choice) {
         case 1: {
             std::cout << "Your account contains the following chats: " << std::endl;
-            printChats(program->getCurrentUser());
+            printChats((program->getCurrentUser()));
             choices();
         }
             break;
         case 2: {
             int chatNum;
             printChats(program->getCurrentUser());
-            if (program->getCurrentUser()->noChats()) {
+            if (program->getCurrentUser().noChats()) {
                 choices();
                 break;
             }
@@ -83,7 +83,7 @@ void TextUserInterface::choices() {
             int ChatDelete;
             int IDDelete;
             printChats(program->getCurrentUser());
-            if (program->getCurrentUser()->noChats()) {
+            if (program->getCurrentUser().noChats()) {
                 choices();
                 break;
             }
@@ -94,7 +94,7 @@ void TextUserInterface::choices() {
             printChatMessages(program->getCurrentUser(), ChatDelete);
             std::cout << "What message would you like to delete? Insert by message ID: " << std::endl;
             std::cin >> IDDelete;
-            deleteAMessage(program->getCurrentUser()->openAChat(ChatDelete), IDDelete);
+            deleteAMessage(program->getCurrentUser().openAChat(ChatDelete), IDDelete);
             std::cout << "Message with ID " << IDDelete << " deleted." << std::endl;
             choices();
 

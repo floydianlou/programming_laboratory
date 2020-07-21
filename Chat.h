@@ -22,8 +22,8 @@ public:
     void addMessage(Message &text);
 
 
-    const Message *getLastMessage() const {
-        return chatMessages.rbegin()->second;
+    Message &getLastMessage() const {
+        return *chatMessages.rbegin()->second;
     }
 
     int numberOfMessages() const {

@@ -13,11 +13,11 @@ Message mx ("Alice", "Luca", "Hey!", 1);
 
 TEST (functions, tests) {
     ASSERT_THROW(loginChoice("3"), std::out_of_range);
-    ASSERT_TRUE(noChats(&user4));
+    ASSERT_TRUE(noChats(user4));
     chat3.addMessage(mx);
     user4.addChat(chat3);
     ASSERT_EQ(chat3.numberOfMessages(), 1);
-    ASSERT_THROW(deleteAMessage(&chat3, 1), std::invalid_argument);
-    changeUserUsername("floydianlou", &user4);
+    ASSERT_THROW(deleteAMessage(chat3, 1), std::invalid_argument);
+    changeUserUsername("floydianlou", user4);
     ASSERT_EQ(user4.getRealName(), "floydianlou");
 }

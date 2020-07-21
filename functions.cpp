@@ -38,16 +38,16 @@ void chatInfo(const Chat& itr) {
     std::cout << "Chat name: " << itr.getChatName() << std::endl;
     std::cout << "Sender: " << itr.getSenderName() << " - Receiver: " << itr.getReceiverName() << std::endl;
     std::cout << "Last message: ";
-    auto message = itr.getLastMessage();
-    auto time = timeToString(message->getCurrentTime());
-    std::cout << time << " from: " << message->getSenderName() << " - " << message->getMessageText();
+    const auto& message = itr.getLastMessage();
+    auto time = timeToString(message.getCurrentTime());
+    std::cout << time << " from: " << message.getSenderName() << " - " << message.getMessageText();
     std::cout << std::endl;
     std::cout << "This chat has " << itr.numOfUnreadMessages() << " unread messages." << std::endl;
     std::cout << std::endl;
 }
 
-bool noChats(const User *user) {
-    if (user->noChats()) {
+bool noChats(const User& user) {
+    if (user.noChats()) {
         std::cout << "There are currently no chats in your account." << std::endl;
         return true;
     } else {
@@ -55,55 +55,55 @@ bool noChats(const User *user) {
     }
 }
 
-void printChats(User *user) {
+void printChats(User& user) {
     if (!noChats(user)) {
-        for (int i = 0; i < user->numberOfChats(); i++) {
-            auto itr = user->openAChat(i);
+        for (int i = 0; i < user.numberOfChats(); i++) {
+            auto itr = user.openAChat(i);
             std::cout << "Chat n. " << i + 1 << std::endl;
-            chatInfo(*itr);
+            chatInfo(itr);
         }
     }
 }
 
-void printUnreadChats(User *user) {
+void printUnreadChats(User& user) {
     if (!noChats(user)) {
-        for (int i = 0; i < user->numberOfChats(); i++) {
-            auto itr = user->openAChat(i);
-            if (itr->numOfUnreadMessages() > 0) {
-                chatInfo(*itr);
+        for (int i = 0; i < user.numberOfChats(); i++) {
+            auto itr = user.openAChat(i);
+            if (itr.numOfUnreadMessages() > 0) {
+                chatInfo(itr);
             }
         }
     }
 }
 
-void deleteAMessage(Chat *chat, int IDNum) {
-    chat->deleteMessage(IDNum);
+void deleteAMessage(Chat &chat, int IDNum) {
+    chat.deleteMessage(IDNum);
 }
 
 
-void numOfUnreadChats(const User *user)  {
-    int numberOfChats = user->getNumOfUnreadChats();
+void numOfUnreadChats(const User &user)  {
+    int numberOfChats = user.getNumOfUnreadChats();
     std::cout << "You have " << numberOfChats << " chat(s) with unread messages." << std::endl;
 }
 
-void printMessageInfo(const Message *text) {
-    std::string time = timeToString(text->getCurrentTime());
+void printMessageInfo(const Message &text) {
+    std::string time = timeToString(text.getCurrentTime());
     std::cout << time << " ";
-    std::cout << "From: " << text->getSenderName() << " - Read (0/1): " << text->isRead() << " - Message ID: ";
-    std::cout << text->getMessageId() << std::endl;
-    std::cout << text->getMessageText() << std::endl;
+    std::cout << "From: " << text.getSenderName() << " - Read (0/1): " << text.isRead() << " - Message ID: ";
+    std::cout << text.getMessageId() << std::endl;
+    std::cout << text.getMessageText() << std::endl;
 }
 
-void printChatMessages(User *user, int chatNumber) {
-    auto itr = user->openAChat(chatNumber);
-    auto firstText = itr->openMessage();
-    for (int count = 0; count < itr->numberOfMessages(); count++) {
-        printMessageInfo(firstText->second);
+void printChatMessages(User &user, int chatNumber) {
+    auto itr = user.openAChat(chatNumber);
+    auto firstText = itr.openMessage();
+    for (int count = 0; count < itr.numberOfMessages(); count++) {
+        printMessageInfo(*firstText->second);
         std::advance(firstText, 1);
     }
 }
 
-void changeUserUsername(std::string newUsername, User *user) {
-    user->setRealName(newUsername);
-    std::cout << "Username changed to " << user->getRealName() << "." << std::endl;
+void changeUserUsername(std::string newUsername, User &user) {
+    user.setRealName(newUsername);
+    std::cout << "Username changed to " << user.getRealName() << "." << std::endl;
 }

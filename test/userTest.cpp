@@ -18,6 +18,6 @@ TEST(User, tests) {
     u.addChat(chat1);
     ASSERT_EQ(u.getNumOfUnreadChats(), 1);
     auto chat2 = u.openAChat(0);
-    ASSERT_EQ(chat2->getSenderName(), chat1.getSenderName());
+    ASSERT_EQ(chat2.getSenderName(), chat1.getSenderName());
     ASSERT_FALSE(u.noChats());
 }

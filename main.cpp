@@ -9,15 +9,18 @@
 int main() {
 
     try {
+
+        // users
+
         auto alice = new User("Alice");
         auto luca = new User("Luca");
         auto olivia = new User("Olivia");
         auto margherita = new User("Margherita");
 
-        ProgramManager program(alice);
-        program.addUser(luca);
-        program.addUser(olivia);
-        program.addUser(margherita);
+        ProgramManager program(*alice);
+        program.addUser(*luca);
+        program.addUser(*olivia);
+        program.addUser(*margherita);
 
         auto chat1 = new Chat(*alice, *luca, "luca <3");
         auto chat2 = new Chat(*alice, *olivia, "mamma <3");
